@@ -32,14 +32,10 @@ class MainResource(resource.Resource):
         }
         return data
 
-    def make_absolute_url(self, request, uri):
-        req = request.URLPath()
-        return urlparse.urlunparse([req.scheme, req.netloc, uri, '', '', ''])
-
-    def make_absolute_file_url(self, request, filepath):
+    def make_file_url(self, request, filepath):
         rel_path = os.path.relpath(filepath, self.save_dir)
-        uri = os.path.join(self.save_dir_url, rel_path)
-        return self.make_absolute_url(request, uri)
+        url = os.path.join(self.save_dir_url, rel_path)
+        return url
 
     @inlineCallbacks
     def get_data(self, request):
@@ -58,8 +54,8 @@ class MainResource(resource.Resource):
             request.setResponseCode(500)
             returnValue(self.error('internal server error'))
         result = {
-            'georeferenced_image': self.make_absolute_file_url(request, georeferenced_image),
-            'web_image': self.make_absolute_file_url(request, web_image),
+            'georeferenced_image': self.make_file_url(request, georeferenced_image),
+            'web_image': self.make_file_url(request, web_image),
         }
         returnValue(self.success(result))
         
