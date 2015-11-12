@@ -1,5 +1,6 @@
 from twisted.web.client import ResponseDone, PotentialDataLoss, PartialDownloadError
 from twisted.internet import reactor, protocol, defer
+from twisted.internet.defer import inlineCallbacks
 
 class FileWriterProtocol(protocol.Protocol):
     def __init__(self, fp, status, message, deferred):
@@ -18,9 +19,10 @@ class FileWriterProtocol(protocol.Protocol):
     def dataReceived(self, data):
         reactor.callInThread(self._write, data)
         
+    @inlineCallbacks
     def connectionLost(self, reason):
         if reason.check(ResponseDone):
-            reactor.callInThread(self._flush)
+            yield reactor.callInThread(self._flush)
             self.deferred.callback(None)
         elif reason.check(PotentialDataLoss):
             self.deferred.errback(
