@@ -6,7 +6,7 @@
 Simplest way to run image-geo-transform is run via Docker:
 
 ```
-docker run -e SERVER_URL=http://localhost:8000 -it -p 8000:80 unknownlighter/image-geo-transform
+docker run -it -p 8000:80 unknownlighter/image-geo-transform
 ```
 
 ## Usage ##
