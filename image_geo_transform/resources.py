@@ -7,8 +7,8 @@ from twisted.web.server import NOT_DONE_YET
 from twisted.internet import reactor
 from twisted.internet.defer import inlineCallbacks, returnValue
 
-from processing import ImageProcessing, ImageProcessingError
-from forms import Form
+from .processing import ImageProcessing, ImageProcessingError
+from .forms import Form
 
 class MainResource(resource.Resource):
     isLeaf = True

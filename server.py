@@ -3,7 +3,7 @@ import sys
 from twisted.web import server
 from twisted.internet import reactor, endpoints
 from twisted.python import usage
-from resources import MainResource
+from image_geo_transform.resources import MainResource
 
 class Options(usage.Options):
 

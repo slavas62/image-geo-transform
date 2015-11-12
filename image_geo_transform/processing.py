@@ -6,7 +6,7 @@ from twisted.web.client import Agent
 from twisted.internet import reactor, defer, protocol
 from twisted.internet.defer import inlineCallbacks, returnValue
 
-from fs import write_body_to_file
+from .fs import write_body_to_file
 
 
 class ProcessProtocolDeferred(protocol.ProcessProtocol):
