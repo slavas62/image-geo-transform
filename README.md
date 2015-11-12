@@ -10,7 +10,7 @@ docker run -e SERVER_URL=http://localhost:8000 -it -p 8000:80 unknownlighter/ima
 ```
 
 ## Usage ##
-For getting georeferenced image you should make POST-request with few parameters (source image url and geographic coordinates for each image corner).
+For getting georeferenced image you should make POST-request with few parameters (source image url and geographic coordinates (must be in WGS 84 coordinate system) for each image corner).
 
 Request:
 
@@ -29,4 +29,4 @@ Response:
    "success":true
 }
 ```
-Where "georeferenced_image" is GeoTiff-file (without warping), and "web_image" is transformed to EPSG:3857 PNG-file. 
+Where "georeferenced_image" is GeoTiff-file (without warping), and "web_image" is transformed to EPSG:3857 PNG-file.
