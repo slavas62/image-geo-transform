@@ -32,9 +32,22 @@ class MainResource(resource.Resource):
         }
         return data
 
+    def make_absolute_url(self, request, uri):
+        netloc = request.getHeader('host')
+        if not netloc:
+            return uri
+        scheme = 'https' if request.getHeader('X_FORWARDED_PROTO') == 'https' else 'http'
+        url_parts = [scheme, netloc, uri, '', '', '']
+        return urlparse.urlunparse(url_parts)
+
     def make_file_url(self, request, filepath):
         rel_path = os.path.relpath(filepath, self.save_dir)
         url = os.path.join(self.save_dir_url, rel_path)
+        
+        url_parts = urlparse.urlparse(url)
+        if not url_parts.netloc:
+            url = self.make_absolute_url(request, url)
+        
         return url
 
     @inlineCallbacks
