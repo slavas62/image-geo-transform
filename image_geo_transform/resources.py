@@ -76,7 +76,6 @@ class MainResource(resource.Resource):
     def defer_POST(self, request):
         resp = yield self.get_data(request)
         request.setHeader("content-type", "application/json")
-        request.setHeader("Access-Control-Allow-Origin", "*")
         request.write(json.dumps(resp))
         request.finish()
 
