@@ -23,8 +23,8 @@ Response:
 ```
 {
    "result":{
-      "web_image":"http://localhost:808800-rm/files/e0c882c950e6176708859c2946e0ba0bb99fb6c6.png",
-      "georeferenced_image":"http://localhost:808800-rm/files/e0c882c950e6176708859c2946e0ba0bb99fb6c6.tif"
+      "web_image":"http://localhost:8000/files/e0c882c950e6176708859c2946e0ba0bb99fb6c6.png",
+      "georeferenced_image":"http://localhost:8000/files/e0c882c950e6176708859c2946e0ba0bb99fb6c6.tif"
    },
    "success":true
 }
