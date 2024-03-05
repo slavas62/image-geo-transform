@@ -1,2 +1,2 @@
-Twisted==15.4.0
+Twisted==19.2.1
 WTForms==2.0.2
